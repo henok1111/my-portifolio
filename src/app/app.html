@@ -1,0 +1,312 @@
+<div class="site-shell">
+  <header class="site-header section-wrap" appScrollReveal>
+    <a class="wordmark" href="#home" aria-label="Henok Basazn Arega, home">
+      <span class="wordmark-mark">H</span>
+      <span>Henok Basazn Arega</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      (click)="menuOpen = !menuOpen"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="primary-navigation"
+      aria-label="Toggle navigation"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="site-nav"
+      [class.is-open]="menuOpen"
+      aria-label="Main navigation"
+    >
+      <a href="#projects" (click)="navigateTo('projects', $event)">Projects</a>
+      <a href="#skills" (click)="navigateTo('skills', $event)">Skills</a>
+      <a href="#about" (click)="navigateTo('about', $event)">About</a>
+      <a class="nav-contact" href="#contact" (click)="navigateTo('contact', $event)">Contact <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy" appScrollReveal>
+        <p class="eyebrow"><span class="status-dot"></span> Full-stack web developer <span class="eyebrow-location">· Ethiopia</span></p>
+        <h1>Hi, I’m Henok.<br />I build for the <span>web &amp; mobile.</span></h1>
+        <p class="hero-intro">
+          I’m a full-stack developer with an Information Systems background,
+          building modern web and mobile applications with React, Angular,
+          Node.js, .NET, and Flutter.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-note">
+          <span class="note-line"></span>
+          <span>Advanced full-stack web &amp; mobile development · Qiyas Project graduate</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" appScrollReveal>
+        <img
+          class="profile-photo"
+          src="/henok-profile.png"
+          alt="Henok Basazn Arega, full-stack web developer"
+          fetchpriority="high"
+        />
+        <div class="code-window">
+          <div class="window-bar">
+            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="window-title">henok / about-me.ts</span>
+            <span class="window-menu" aria-hidden="true">···</span>
+          </div>
+          <div class="code-body" aria-label="Code introduction">
+            <div class="code-line"><span class="line-number">01</span><span><span class="syntax-purple">const</span> henok = &#123;</span></div>
+            <div class="code-line"><span class="line-number">02</span><span class="code-indent">name: <span class="syntax-green">'Henok Basazn Arega'</span>,</span></div>
+            <div class="code-line"><span class="line-number">03</span><span class="code-indent">role: <span class="syntax-green">'Full-stack developer'</span>,</span></div>
+            <div class="code-line"><span class="line-number">04</span><span class="code-indent">location: <span class="syntax-green">'Ethiopia'</span>,</span></div>
+            <div class="code-line"><span class="line-number">05</span><span class="code-indent">stack: [</span></div>
+            <div class="code-line"><span class="line-number">06</span><span class="code-indent code-indent-double"><span class="syntax-blue">'Angular'</span>, <span class="syntax-blue">'ASP.NET'</span>,</span></div>
+            <div class="code-line"><span class="line-number">07</span><span class="code-indent">],</span></div>
+            <div class="code-line"><span class="line-number">08</span><span class="code-indent">mobile: <span class="syntax-blue">'Flutter'</span>,</span></div>
+            <div class="code-line"><span class="line-number">09</span><span class="code-indent">mindset: <span class="syntax-green">'build and learn'</span></span></div>
+            <div class="code-line"><span class="line-number">10</span><span>&#125;</span></div>
+          </div>
+          <div class="window-status">
+            <span><i aria-hidden="true">⌁</i> main</span>
+            <span>Full-stack web &amp; mobile</span>
+          </div>
+        </div>
+        <div class="visual-caption"><span class="caption-mark">&lt;/&gt;</span><span>Curious mind. Practical code.</span></div>
+      </div>
+    </section>
+
+    <section class="tech-strip" aria-label="Technology stack" appScrollReveal>
+      <div class="section-wrap tech-strip-inner">
+        <span class="tech-label">TECH I WORK WITH</span>
+        <span>Angular</span><span>React</span><span>TypeScript</span><span>Node.js</span><span>ASP.NET Core</span><span>Flutter</span><span>SQL</span>
+      </div>
+    </section>
+
+    <section class="projects-section section-wrap" id="projects">
+      <div class="section-heading" appScrollReveal>
+        <div>
+          <p class="eyebrow"><span class="section-index">01 /</span> Selected work</p>
+          <h2>Full-stack <span>projects.</span></h2>
+        </div>
+        <p class="section-description">
+          A selection of web application projects using modern frontend,
+          backend, and database technologies.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        @for (project of projects; track project.title; let index = $index) {
+          <article class="project-card" appScrollReveal>
+            <div class="project-card-top">
+              <span class="project-card-initials">{{ project.initials }}</span>
+              <span class="project-card-number">0{{ index + 1 }}</span>
+            </div>
+            <p class="project-kind">FULL-STACK WEB APPLICATION</p>
+            <h3>{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <p class="project-role">{{ project.role }}</p>
+            <div class="tag-list">
+              @for (technology of project.technologies; track technology) {
+                <span>{{ technology }}</span>
+              }
+            </div>
+            <a class="project-cta" [href]="project.repository" target="_blank" rel="noreferrer">
+              View repository <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="section-wrap skills-inner">
+        <div class="section-heading" appScrollReveal>
+          <div>
+            <p class="eyebrow"><span class="section-index">02 /</span> My toolkit</p>
+            <h2>Technologies &amp; <span>skills.</span></h2>
+          </div>
+          <p class="section-description">
+            Technologies I use to build full-stack web and mobile applications.
+          </p>
+        </div>
+        <div class="skill-groups">
+          <article class="skill-group" appScrollReveal>
+            <span class="skill-number">01</span>
+            <div>
+              <h3>Frontend</h3>
+              <p>Building responsive, interactive interfaces and client-side applications.</p>
+              <div class="tag-list"><span>Angular</span><span>React</span><span>JavaScript</span><span>TypeScript</span><span>HTML &amp; CSS</span></div>
+            </div>
+            <span class="skill-icon" aria-hidden="true">⌘</span>
+          </article>
+          <article class="skill-group" appScrollReveal>
+            <span class="skill-number">02</span>
+            <div>
+              <h3>Backend</h3>
+              <p>Creating server-side applications and APIs for web products.</p>
+              <div class="tag-list"><span>Node.js</span><span>Express.js</span><span>C#</span><span>ASP.NET Core</span></div>
+            </div>
+            <span class="skill-icon" aria-hidden="true">&#123; &#125;</span>
+          </article>
+          <article class="skill-group" appScrollReveal>
+            <span class="skill-number">03</span>
+            <div>
+              <h3>Mobile &amp; data</h3>
+              <p>Building mobile apps and working with relational databases.</p>
+              <div class="tag-list"><span>Flutter</span><span>SQL</span><span>PostgreSQL</span><span>MySQL</span></div>
+            </div>
+            <span class="skill-icon" aria-hidden="true">◫</span>
+          </article>
+          <article class="skill-group" appScrollReveal>
+            <span class="skill-number">04</span>
+            <div>
+              <h3>Additional skills</h3>
+              <p>Complementary creative, productivity, networking, and communication skills from my CV.</p>
+              <div class="tag-list"><span>Graphic design</span><span>Microsoft Office</span><span>Cisco networking</span><span>Amharic · Native</span><span>English · Professional</span></div>
+            </div>
+            <span class="skill-icon" aria-hidden="true">＋</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section section-wrap" id="about">
+      <div class="about-heading" appScrollReveal>
+        <p class="eyebrow"><span class="section-index">03 /</span> A little about me</p>
+        <h2>Developer by choice.<br /><span>Problem-solver by nature.</span></h2>
+      </div>
+      <div class="about-content" appScrollReveal>
+        <div class="about-copy">
+          <p>
+            My background in Information Systems shaped how I approach
+            technology: understand the problem, think about the people using
+            the solution, and build something reliable.
+          </p>
+          <p>
+            I completed the Qiyas Project’s advanced full-stack web
+            development program at Addis Ababa University, covering web
+            development with Angular and .NET as well as mobile application
+            development with Flutter. I’m always looking to collaborate and
+            build software that solves practical problems.
+          </p>
+        </div>
+        <div class="education-card">
+          <span class="education-icon" aria-hidden="true">↗</span>
+          <span class="education-label">COMPLETED TRAINING</span>
+          <h3>Qiyas Project</h3>
+          <p>Advanced full-stack web &amp; mobile app development · Addis Ababa University</p>
+          <span class="education-divider"></span>
+          <span class="education-label">EDUCATION · JUNE 2024</span>
+          <strong>Bachelor’s degree in Information Systems · Wolkite University</strong>
+          <span class="education-divider"></span>
+          <span class="education-label">TECHNICAL EXPERIENCE · 2022</span>
+          <strong>Software project · WKU ICT Incubation Center</strong>
+          <span class="education-divider"></span>
+          <span class="education-label">WEB DEVELOPMENT CERTIFICATE · 2026</span>
+          <strong>Responsive Web Design · freeCodeCamp</strong>
+          <span class="education-divider"></span>
+          <span class="education-label">DATABASE CERTIFICATE · 2024</span>
+          <strong>Oracle Database · Oracle Academy</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="section-wrap contact-inner">
+        <div class="contact-copy" appScrollReveal>
+          <p class="eyebrow"><span class="section-index">04 /</span> Get in touch</p>
+          <h2>Have an idea?<br /><span>Let’s talk.</span></h2>
+          <p>
+            I’m open to connecting with fellow developers, learning from new
+            opportunities, and collaborating on meaningful software.
+          </p>
+          <div class="contact-location"><span class="status-dot"></span> Based in Addis Ababa, Ethiopia</div>
+          <div class="contact-details" aria-label="Contact details">
+            <h3>Connect with me</h3>
+            <a class="contact-link" href="mailto:henokbasa1221@gmail.com">
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">henokbasa1221@gmail.com</span>
+              <span class="contact-link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="contact-link" href="tel:0940057552">
+              <span class="contact-link-label">Phone</span>
+              <span class="contact-link-value">0940057552</span>
+              <span class="contact-link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="contact-link" href="https://t.me/henok_1212" target="_blank" rel="noreferrer">
+              <span class="contact-link-label">Telegram</span>
+              <span class="contact-link-value">@henok_1212</span>
+              <span class="contact-link-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" (ngSubmit)="submitContact()" #contactForm="ngForm" appScrollReveal>
+          <p class="form-title">Send me a message</p>
+          <label for="contact-name">Your name</label>
+          <input
+            id="contact-name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            autocomplete="name"
+            required
+            maxlength="100"
+            [(ngModel)]="contact.name"
+          />
+          <label for="contact-email">Your email</label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+            maxlength="254"
+            [(ngModel)]="contact.email"
+          />
+          <label for="contact-message">Message</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            placeholder="What would you like to talk about?"
+            required
+            minlength="10"
+            maxlength="2000"
+            rows="4"
+            [(ngModel)]="contact.message"
+          ></textarea>
+          @if (submissionState() === 'success') {
+            <p class="form-feedback form-success" role="status">{{ submissionMessage() }}</p>
+          } @else if (submissionState() === 'error') {
+            <p class="form-feedback form-error" role="alert">{{ submissionMessage() }}</p>
+          }
+          <button class="button button-primary form-submit" type="submit" [disabled]="contactForm.invalid || isSubmitting()">
+            {{ isSubmitting() ? 'Sending message…' : 'Send message' }}
+            <span aria-hidden="true">↗</span>
+          </button>
+          <p class="form-note">Demo form: the local API accepts messages but does not send email.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-wrap" appScrollReveal>
+    <a class="wordmark" href="#home" aria-label="Henok Basazn Arega, back to top">
+      <span class="wordmark-mark">H</span>
+      <span>Henok Basazn Arega</span>
+    </a>
+    <p>Designed &amp; built with Angular and ASP.NET Core.</p>
+    <a class="back-to-top" href="#home">Back to top ↑</a>
+    <span class="copyright">© 2026 Henok Basazn Arega</span>
+  </footer>
+</div>
